@@ -14,3 +14,13 @@ export default {
   },
   plugins: [],
 };
+
+// at_lnjRI3qDFAUsikUtbBroNpwHP1Qv6
+
+// https://geo.ipify.org/api/v2/country?apiKey=at_lnjRI3qDFAUsikUtbBroNpwHP1Qv6
+
+// https://geo.ipify.org/api/v2/country?apiKey=at_lnjRI3qDFAUsikUtbBroNpwHP1Qv6&ipAddress=
+
+/** `https://geo.ipify.org/api/v2/country?apiKey=${
+  import.meta.env.VITE_API_KEY
+}` **/
