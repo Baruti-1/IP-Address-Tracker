@@ -1,59 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import useFindLocation from '../hooks/useFindLocation';
 import MobileMap from './MobileMap';
 
-// const url = `https://geo.ipify.org/api/v2/country?apiKey=${
-//   import.meta.env.VITE_API_KEY
-// }`;
-
-// url2 = `https://geo.ipify.org/api/v2/country?apiKey=${
-//   import.meta.env.VITE_API_KEY
-// }&ipAddress=${location.ip}`
-
-const map_url = `https://geo.ipify.org/api/v2/country,city?apiKey=${
+const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${
   import.meta.env.VITE_API_KEY
 }`;
 
 const Mobile = () => {
-  const [loading, setLoading] = useState(false);
-  const [location, setLocation] = useState({
-    ip: '',
-    country: '',
-    city: '',
-    timezone: '',
-    isp: '',
-  });
-
-  //const url = '';
-
-  const fetchLocation = (map_url) => {
-    setLoading(true);
-    fetch(map_url)
-      .then((res) => res.json())
-      .then((data) => {
-        setLocation({
-          ip: data.ip,
-          country: data.location.country,
-          city: data.location.city,
-          timezone: data.location.timezone,
-          isp: data.isp,
-        });
-        console.log('DATA: ', data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setLoading(false);
-      });
-  };
+  const { loading, location, fetchLocation } = useFindLocation();
 
   useEffect(() => {
-    fetchLocation(map_url);
+    fetchLocation(url);
   }, []);
+
+  let ip = '';
 
   const getLocationInfo = (e) => {
     e.preventDefault();
-    fetchLocation(url2);
+    fetchLocation(url + `&ipAddress=${ip}`);
   };
+
+  console.log(location);
 
   if (loading) {
     return (
@@ -75,9 +42,7 @@ const Mobile = () => {
                 type="text"
                 placeholder={location.ip}
                 className="border-2 border-white text-[18px] text-darkgray pl-5 p-2 focus:outline-none rounded-l-lg"
-                onChange={(e) =>
-                  setLocation({ ...location, ip: e.target.value })
-                }
+                onChange={(e) => (ip = e.target.value)}
               />
               <button
                 type="submit"
@@ -113,7 +78,10 @@ const Mobile = () => {
         </div>
         {/* map */}
         <div className="mx-auto max-w-full max-h-fit  mt-[-7.9rem]">
-          <MobileMap />
+          <MobileMap
+            latitude={location.latitude}
+            longitude={location.longitude}
+          />
         </div>
       </section>
     </>
