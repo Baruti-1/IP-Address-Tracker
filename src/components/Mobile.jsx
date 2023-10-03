@@ -2,11 +2,9 @@ import { useEffect } from 'react';
 import useFindLocation from '../hooks/useFindLocation';
 import MobileMap from './MobileMap';
 
-const url2 = `https://geo.ipify.org/api/v2/country,city?apiKey=${
+const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${
   import.meta.env.VITE_API_KEY
 }`;
-
-const url = '';
 
 const Mobile = () => {
   const { loading, location, fetchLocation } = useFindLocation();
