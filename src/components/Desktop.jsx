@@ -37,7 +37,7 @@ const Desktop = () => {
             <input
               required
               type="text"
-              placeholder="Search for any IP adress or domain"
+              placeholder="Search for any IP address or domain"
               className="border-2 border-white text-sm text-verydarkgray pl-5 p-3 focus:outline-none rounded-l-lg w-[40%]"
               onChange={(e) => (ip = e.target.value)}
             />
