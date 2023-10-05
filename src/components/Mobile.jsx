@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import useFindLocation from '../hooks/useFindLocation';
 import MobileMap from './MobileMap';
+import iconArrow from '../assets/images/icon-arrow.svg';
 
 const url = `https://geo.ipify.org/api/v2/country,city?apiKey=${
   import.meta.env.VITE_API_KEY
@@ -22,7 +23,7 @@ const Mobile = () => {
 
   if (loading) {
     return (
-      <div className="h-72 text-center bg-[url('images/pattern-bg-mobile.png')] bg-no-repeat bg-cover">
+      <div className="bgImg h-72 text-center">
         <p className="text-white text-xl pt-24 font-bold">loading...</p>
       </div>
     );
@@ -30,7 +31,7 @@ const Mobile = () => {
 
   return (
     <section id="mobile" className="font-rubik md:hidden">
-      <div className="h-72 text-center bg-[url('images/pattern-bg-mobile.png')] bg-no-repeat bg-cover">
+      <div className="bgImg h-72 text-center">
         <h1 className="text-white text-xl pt-9">IP Address Tracker</h1>
         <div className="flex justify-center pt-7">
           <form onSubmit={getLocationInfo} className="mr-10">
@@ -45,7 +46,7 @@ const Mobile = () => {
               type="submit"
               className="bg-verydarkgray absolute bottom-29 p-[1.05rem] rounded-r-lg text-white"
             >
-              <img src={'images/icon-arrow.svg'} />
+              <img src={iconArrow} />
             </button>
           </form>
         </div>

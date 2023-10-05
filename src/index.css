@@ -11,3 +11,15 @@ html {
   height: 100vh;
   z-index: -1;
 }
+
+.bgImg {
+  background-image: url('./assets/images/pattern-bg-mobile.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.dbgImg {
+  background-image: url('./assets/images/pattern-bg-desktop.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
